@@ -13,6 +13,7 @@ function Abc() {
     buttonText: "Start",
   });
   const [image, setImage] = useState(null);
+  const [placement, setPlacement] = useState("right"); // Default placement
 
   const handleScreenChange = (screen) => {
     setActiveScreen(screen);
@@ -23,7 +24,9 @@ function Abc() {
   };
 
   const handleImageUpload = (file) => {
-    if (file && file.type.startsWith("image/")) {
+    if (file === null) {
+      setImage(null); // Clear the image if file is null
+    } else if (file && file.type.startsWith("image/")) {
       const reader = new FileReader();
       reader.onload = () => {
         setImage(reader.result);
@@ -32,6 +35,10 @@ function Abc() {
     } else {
       console.error("Invalid file type");
     }
+  };
+
+  const handlePlacementChange = (newPlacement) => {
+    setPlacement(newPlacement); // Update placement
   };
 
   return (
@@ -50,6 +57,7 @@ function Abc() {
             onImageUpload={handleImageUpload}
             image={image}
             onClose={() => handleScreenChange("default")}
+            onPlacementChange={handlePlacementChange} // Pass handler
           />
         ) : (
           <LeftSidebar
@@ -60,11 +68,19 @@ function Abc() {
 
         {/* Conditionally render MainContent or EmailScreen */}
         {activeScreen === "welcome" ? (
-          <MainContent formData={formData} image={image} />
+          <MainContent
+            formData={formData}
+            image={image}
+            placement={placement}
+          />
         ) : activeScreen === "email" ? (
           <EmailScreen />
         ) : (
-          <MainContent formData={formData} image={image} />
+          <MainContent
+            formData={formData}
+            image={image}
+            placement={placement}
+          />
         )}
       </div>
     </div>

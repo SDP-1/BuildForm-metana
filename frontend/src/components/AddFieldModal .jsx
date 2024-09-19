@@ -6,6 +6,7 @@ import {
   IconButton,
   Grid,
   Typography,
+  ButtonBase,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import CheckIcon from "@mui/icons-material/Check";
@@ -76,8 +77,8 @@ export const AddFieldModal = ({ onClose, onSelectField }) => {
       fullWidth
       sx={{
         "& .MuiDialog-paper": {
-          borderRadius: "16px",
-          padding: "16px",
+          borderRadius: "10px",
+          padding: "8px",
           overflow: "hidden",
         },
       }}
@@ -89,7 +90,7 @@ export const AddFieldModal = ({ onClose, onSelectField }) => {
           color="inherit"
           onClick={onClose}
           aria-label="close"
-          sx={{ position: "absolute", right: 8, top: 8 }}
+          sx={{ position: "absolute", right: 30, top: 8 }}
         >
           <CloseIcon fontSize="small" />
         </IconButton>
@@ -103,18 +104,27 @@ export const AddFieldModal = ({ onClose, onSelectField }) => {
         <Grid container spacing={2}>
           {fieldOptions.map((field) => (
             <Grid item xs={12} sm={6} md={4} key={field.value}>
-              <Grid container alignItems="center" spacing={1}>
-                <Grid item>{field.icon}</Grid>
-                <Grid item>
-                  <Typography
-                    variant="body2"
-                    sx={{ fontSize: "12px", cursor: "pointer" }}
-                    onClick={() => handleFieldSelect(field.value)}
-                  >
-                    {field.label}
-                  </Typography>
-                </Grid>
-              </Grid>
+              <ButtonBase
+                onClick={() => handleFieldSelect(field.value)}
+                sx={{
+                  width: "100%",
+                  padding: "5px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "flex-start",
+                  border: "1px solid #e0e0e0",
+                  borderRadius: "8px",
+                  transition: "background-color 0.3s",
+                  "&:hover": {
+                    backgroundColor: "#f5f5f5",
+                  },
+                }}
+              >
+                <div style={{ marginRight: "8px" }}>{field.icon}</div>
+                <Typography variant="body2" sx={{ fontSize: "14px" }}>
+                  {field.label}
+                </Typography>
+              </ButtonBase>
             </Grid>
           ))}
         </Grid>

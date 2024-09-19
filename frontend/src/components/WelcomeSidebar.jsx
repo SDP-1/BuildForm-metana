@@ -7,8 +7,10 @@ const WelcomeSidebar = ({
   onImageUpload,
   image,
   onClose,
+  onPlacementChange, // Add this prop to handle placement changes
 }) => {
   const [localFormData, setLocalFormData] = useState(formData);
+  const [placement, setPlacement] = useState("right"); // Default placement
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -28,8 +30,13 @@ const WelcomeSidebar = ({
     onImageUpload(null); // Remove the image
   };
 
+  const handlePlacementChange = (newPlacement) => {
+    setPlacement(newPlacement);
+    onPlacementChange(newPlacement); // Notify parent component about placement change
+  };
+
   return (
-    <div className="w-[300px] h-full flex flex-col p-4 bg-white shadow-md">
+    <div className="w-[300px] bg-neutral-50 p-4 rounded-lg">
       {/* Header */}
       <header className="flex justify-between items-center mb-4">
         <div className="flex items-center">
@@ -110,21 +117,56 @@ const WelcomeSidebar = ({
             />
           </div>
 
-          {/* Image Preview and Remove Button */}
+          {/* Conditionally Render Image Preview, Remove Button, and Placement Options */}
           {image && (
             <div className="mt-2">
               <img
                 src={image}
                 alt="Uploaded Preview"
-                className="w-full h-auto rounded-md"
+                className="w-[270px] h-[150px] object-cover rounded-md" // Set specific size here
               />
-              <button
-                type="button"
-                className="text-red-400 mt-2 text-sm"
-                onClick={handleRemoveImage}
-              >
-                Remove Image
-              </button>
+              <div className="flex justify-center mt-2">
+                <button
+                  type="button"
+                  className="border border-neutral-300 text-black rounded-md px-3 py-1 text-sm"
+                  onClick={handleRemoveImage}
+                >
+                  Remove Image
+                </button>
+              </div>
+
+              {/* Placement Options */}
+              <div className="flex items-center space-x-4 mt-4">
+                {/* Label */}
+                <span className="text-neutral-800 text-sm font-medium mb-1">Placement</span>
+
+                {/* Buttons */}
+                <div className="flex space-x-2">
+                  <button
+                    type="button"
+                    className={`w-10 h-8 border rounded-lg flex items-center justify-center ${placement === "right" ? "bg-gray-200" : ""}`}
+                    onClick={() => handlePlacementChange("right")}
+                  >
+                    <img
+                      src="src/assets/grid_1.png" // Replace with your image path
+                      alt="Icon 1"
+                      className="w-6 h-6"
+                    />
+                  </button>
+
+                  <button
+                    type="button"
+                    className={`w-10 h-8 border rounded-lg flex items-center justify-center ${placement === "left" ? "bg-gray-200" : ""}`}
+                    onClick={() => handlePlacementChange("left")}
+                  >
+                    <img
+                      src="src/assets/grid_2.png" // Replace with your image path
+                      alt="Icon 2"
+                      className="w-6 h-6"
+                    />
+                  </button>
+                </div>
+              </div>
             </div>
           )}
         </div>
