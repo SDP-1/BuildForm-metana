@@ -3,19 +3,19 @@ import React from "react";
 const MainContent = ({ formData, image }) => {
   return (
     <div
-      className="flex-grow bg-black text-white flex items-center justify-between rounded-lg m-3 p-24 max-h-[100%] overflow-auto"
-      style={{ width: 'calc(100% - 300px)' }}
+      className="flex-grow bg-white text-black flex items-center justify-between rounded-lg m-3 p-24 max-h-[100%] overflow-auto shadow-2xl shadow-2xl"
+      style={{ width: "calc(100% - 300px)" }}
     >
       {/* Left Side: Title, Description, and Button */}
       <div className="flex flex-col items-start max-w-[50%]">
         {/* Title */}
-        <h1 className="text-5xl font-bold mb-4 text-white">{formData.title}</h1>
+        <h1 className="text-5xl font-bold mb-4">{formData.title}</h1>
 
         {/* Description */}
-        <p className="text-2xl mb-6 text-white">{formData.description}</p>
+        <p className="text-2xl mb-6">{formData.description}</p>
 
         {/* Button */}
-        <button className="bg-white text-black py-2 px-6 rounded-full text-sm">
+        <button className="bg-black text-white py-2 px-6 rounded-full text-sm">
           {formData.buttonText}
         </button>
       </div>

@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Abc from "./pages/Abc";
-import WelcomeScreen from "./components/WelcomeScreen";
+import WelcomeSidebar from "./components/WelcomeSidebar";
 
 function App() {
   return (

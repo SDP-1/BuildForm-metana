@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Close, Settings, Upload } from "@mui/icons-material";
 
-const WelcomeScreen = ({
+const WelcomeSidebar = ({
   formData,
   onFormChange,
   onImageUpload,
@@ -141,4 +141,4 @@ const WelcomeScreen = ({
   );
 };
 
-export default WelcomeScreen;
+export default WelcomeSidebar;

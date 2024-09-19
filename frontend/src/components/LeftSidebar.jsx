@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { AddFieldModal } from "../components/AddFieldModal "; // Ensure no trailing space in import path
+import { AddFieldModal } from "../components/AddFieldModal ";
 import { IconButton, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import CheckIcon from "@mui/icons-material/Check";
@@ -25,7 +25,7 @@ const iconMap = {
   dropdown: <ArrowDropDownIcon fontSize="small" />,
 };
 
-const LeftSidebar = ({ onWelcomeScreenToggle, onEmailSidebarToggle }) => {
+const LeftSidebar = ({ onWelcomeSidebarToggle, onEmailSidebarToggle }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [fields, setFields] = useState([]);
 
@@ -47,7 +47,7 @@ const LeftSidebar = ({ onWelcomeScreenToggle, onEmailSidebarToggle }) => {
 
   const handleFieldClick = (field) => {
     if (field === "email") {
-      onEmailSidebarToggle(); // Open EmailSideBar when email field is clicked
+      onEmailSidebarToggle(); // Trigger the function to change the screen to EmailSideBar
     }
   };
 
@@ -78,7 +78,7 @@ const LeftSidebar = ({ onWelcomeScreenToggle, onEmailSidebarToggle }) => {
       {/* Step 1 */}
       <div
         className="bg-neutral-100 rounded-md flex items-center p-3 mb-2 cursor-pointer"
-        onClick={onWelcomeScreenToggle}
+        onClick={onWelcomeSidebarToggle}
       >
         <span className="w-[10px] h-[10px] bg-neutral-400 rounded-full mr-2"></span>
         <span className="text-neutral-800 text-sm">Welcome screen</span>
@@ -88,7 +88,7 @@ const LeftSidebar = ({ onWelcomeScreenToggle, onEmailSidebarToggle }) => {
         <div
           className="bg-neutral-100 rounded-md flex items-center justify-between py-1 px-4 mb-2 cursor-pointer"
           key={index}
-          onClick={() => handleFieldClick(field)} // Handle field click
+          onClick={() => handleFieldClick(field)}
         >
           <div className="flex items-center">
             <div className="w-8 h-8 flex items-center justify-center">
@@ -107,13 +107,13 @@ const LeftSidebar = ({ onWelcomeScreenToggle, onEmailSidebarToggle }) => {
                 field.slice(1).replace(/_/g, " ")}
             </Typography>
           </div>
-          <IconButton onClick={(e) => {
-            e.stopPropagation(); // Prevent click from triggering field click event
-            handleRemoveField(field);
-          }}>
-            <CloseIcon
-              sx={{ fontSize: 10 }} // Set the icon size to 10px
-            />
+          <IconButton
+            onClick={(e) => {
+              e.stopPropagation();
+              handleRemoveField(field);
+            }}
+          >
+            <CloseIcon sx={{ fontSize: 10 }} />
           </IconButton>
         </div>
       ))}
