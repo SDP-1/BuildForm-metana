@@ -18,7 +18,56 @@ import LanguageIcon from "@mui/icons-material/Language";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
-export const AddFieldModal = ({ onClose }) => {
+const fieldOptions = [
+  {
+    icon: <CheckIcon fontSize="small" />,
+    label: "Multiple Choice",
+    value: "multiple_choice",
+  },
+  {
+    icon: <EditIcon fontSize="small" />,
+    label: "Short Text",
+    value: "short_text",
+  },
+  { icon: <MailIcon fontSize="small" />, label: "Email", value: "email" },
+  {
+    icon: <PhoneIcon fontSize="small" />,
+    label: "Phone Number",
+    value: "phone_number",
+  },
+  {
+    icon: <BorderAllIcon fontSize="small" />,
+    label: "Section",
+    value: "section",
+  },
+  {
+    icon: <InfoIcon fontSize="small" />,
+    label: "Contact Information",
+    value: "contact_information",
+  },
+  {
+    icon: <LanguageIcon fontSize="small" />,
+    label: "Country",
+    value: "country",
+  },
+  {
+    icon: <CheckBoxOutlineBlankIcon fontSize="small" />,
+    label: "Legal",
+    value: "legal",
+  },
+  {
+    icon: <ArrowDropDownIcon fontSize="small" />,
+    label: "Dropdown",
+    value: "dropdown",
+  },
+];
+
+export const AddFieldModal = ({ onClose, onSelectField }) => {
+  const handleFieldSelect = (value) => {
+    onSelectField(value);
+    onClose();
+  };
+
   return (
     <Dialog
       open
@@ -29,12 +78,12 @@ export const AddFieldModal = ({ onClose }) => {
         "& .MuiDialog-paper": {
           borderRadius: "16px",
           padding: "16px",
-          overflow: "hidden", // Prevent overflow
+          overflow: "hidden",
         },
       }}
     >
       <DialogTitle>
-        Add field
+        Add Field
         <IconButton
           edge="end"
           color="inherit"
@@ -47,127 +96,27 @@ export const AddFieldModal = ({ onClose }) => {
       </DialogTitle>
       <DialogContent
         sx={{
-          overflow: "hidden", // Prevent content overflow
+          overflow: "hidden",
           padding: 0,
         }}
       >
         <Grid container spacing={2}>
-          <Grid item xs={12} sm={6} md={4}>
-            <Grid container alignItems="center" spacing={1}>
-              <Grid item>
-                <CheckIcon fontSize="small" />
-              </Grid>
-              <Grid item>
-                <Typography variant="body2" sx={{ fontSize: "12px" }}>
-                  Multiple Choice
-                </Typography>
-              </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={4}>
-            <Grid container alignItems="center" spacing={1}>
-              <Grid item>
-                <EditIcon fontSize="small" />
-              </Grid>
-              <Grid item>
-                <Typography variant="body2" sx={{ fontSize: "12px" }}>
-                  Short Text
-                </Typography>
+          {fieldOptions.map((field) => (
+            <Grid item xs={12} sm={6} md={4} key={field.value}>
+              <Grid container alignItems="center" spacing={1}>
+                <Grid item>{field.icon}</Grid>
+                <Grid item>
+                  <Typography
+                    variant="body2"
+                    sx={{ fontSize: "12px", cursor: "pointer" }}
+                    onClick={() => handleFieldSelect(field.value)}
+                  >
+                    {field.label}
+                  </Typography>
+                </Grid>
               </Grid>
             </Grid>
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={4}>
-            <Grid container alignItems="center" spacing={1}>
-              <Grid item>
-                <MailIcon fontSize="small" />
-              </Grid>
-              <Grid item>
-                <Typography variant="body2" sx={{ fontSize: "12px" }}>
-                  Email
-                </Typography>
-              </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={4}>
-            <Grid container alignItems="center" spacing={1}>
-              <Grid item>
-                <PhoneIcon fontSize="small" />
-              </Grid>
-              <Grid item>
-                <Typography variant="body2" sx={{ fontSize: "12px" }}>
-                  Phone Number
-                </Typography>
-              </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={4}>
-            <Grid container alignItems="center" spacing={1}>
-              <Grid item>
-                <BorderAllIcon fontSize="small" />
-              </Grid>
-              <Grid item>
-                <Typography variant="body2" sx={{ fontSize: "12px" }}>
-                  Section
-                </Typography>
-              </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={4}>
-            <Grid container alignItems="center" spacing={1}>
-              <Grid item>
-                <InfoIcon fontSize="small" />
-              </Grid>
-              <Grid item>
-                <Typography variant="body2" sx={{ fontSize: "12px" }}>
-                  Contact Information
-                </Typography>
-              </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={4}>
-            <Grid container alignItems="center" spacing={1}>
-              <Grid item>
-                <LanguageIcon fontSize="small" />
-              </Grid>
-              <Grid item>
-                <Typography variant="body2" sx={{ fontSize: "12px" }}>
-                  Country
-                </Typography>
-              </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={4}>
-            <Grid container alignItems="center" spacing={1}>
-              <Grid item>
-                <CheckBoxOutlineBlankIcon fontSize="small" />
-              </Grid>
-              <Grid item>
-                <Typography variant="body2" sx={{ fontSize: "12px" }}>
-                  Legal
-                </Typography>
-              </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={4}>
-            <Grid container alignItems="center" spacing={1}>
-              <Grid item>
-                <ArrowDropDownIcon fontSize="small" />
-              </Grid>
-              <Grid item>
-                <Typography variant="body2" sx={{ fontSize: "12px" }}>
-                  Dropdown
-                </Typography>
-              </Grid>
-            </Grid>
-          </Grid>
+          ))}
         </Grid>
       </DialogContent>
     </Dialog>

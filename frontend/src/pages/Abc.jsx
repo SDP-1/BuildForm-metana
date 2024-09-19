@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import LeftSidebar from "../components/LeftSidebar";
 import MainContent from "../components/MainContent ";
 import WelcomeScreen from "../components/WelcomeScreen";
+import EmailSideBar from "../components/EmailSideBar";
 
 function Abc() {
   const [showWelcomeScreen, setShowWelcomeScreen] = useState(false);
-  
+  const [showEmailSidebar, setShowEmailSidebar] = useState(false);
+
   // Form data state
   const [formData, setFormData] = useState({
     title: "Welcome to our form",
@@ -18,6 +20,10 @@ function Abc() {
 
   const handleWelcomeScreenToggle = () => {
     setShowWelcomeScreen(!showWelcomeScreen);
+  };
+
+  const handleEmailSidebarToggle = () => {
+    setShowEmailSidebar(!showEmailSidebar);
   };
 
   // Handle form data change (for title, description, and button text)
@@ -49,8 +55,13 @@ function Abc() {
             image={image}
             onClose={handleWelcomeScreenToggle}
           />
+        ) : showEmailSidebar ? (
+          <EmailSideBar onClose={handleEmailSidebarToggle} />
         ) : (
-          <LeftSidebar onWelcomeScreenToggle={handleWelcomeScreenToggle} />
+          <LeftSidebar
+            onWelcomeScreenToggle={handleWelcomeScreenToggle}
+            onEmailSidebarToggle={handleEmailSidebarToggle}
+          />
         )}
 
         {/* Main Content */}
