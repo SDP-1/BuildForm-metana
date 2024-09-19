@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-import Samplepage from "./pages/samplepage";
+import Abc from "./pages/Abc";
+import WelcomeScreen from "./components/WelcomeScreen";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Samplepage />} />
+        <Route path="/" element={<Abc />} />
       </Routes>
     </Router>
   );
