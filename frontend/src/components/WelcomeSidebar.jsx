@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Close, Settings, Upload } from "@mui/icons-material";
+import { IconButton } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 
 const WelcomeSidebar = ({
   formData,
@@ -43,12 +45,19 @@ const WelcomeSidebar = ({
           <Settings className="mr-2" />
           <h2 className="text-neutral-800 text-sm font-title">Settings</h2>
         </div>
-        <button
+        {/* <button
           className="flex items-center justify-center w-6 h-6 bg-neutral-200 rounded-full"
           onClick={onClose}
         >
           <Close />
-        </button>
+        </button> */}
+
+        <IconButton
+          onClick={onClose}
+          className="rounded-full p-1 bg-neutral-200"
+        >
+          <CloseIcon />
+        </IconButton>
       </header>
 
       {/* Form */}
@@ -138,13 +147,17 @@ const WelcomeSidebar = ({
               {/* Placement Options */}
               <div className="flex items-center space-x-4 mt-4">
                 {/* Label */}
-                <span className="text-neutral-800 text-sm font-medium mb-1">Placement</span>
+                <span className="text-neutral-800 text-sm font-medium mb-1">
+                  Placement
+                </span>
 
                 {/* Buttons */}
                 <div className="flex space-x-2">
                   <button
                     type="button"
-                    className={`w-10 h-8 border rounded-lg flex items-center justify-center ${placement === "right" ? "bg-gray-200" : ""}`}
+                    className={`w-10 h-8 border rounded-lg flex items-center justify-center ${
+                      placement === "right" ? "bg-gray-200" : ""
+                    }`}
                     onClick={() => handlePlacementChange("right")}
                   >
                     <img
@@ -156,7 +169,9 @@ const WelcomeSidebar = ({
 
                   <button
                     type="button"
-                    className={`w-10 h-8 border rounded-lg flex items-center justify-center ${placement === "left" ? "bg-gray-200" : ""}`}
+                    className={`w-10 h-8 border rounded-lg flex items-center justify-center ${
+                      placement === "left" ? "bg-gray-200" : ""
+                    }`}
                     onClick={() => handlePlacementChange("left")}
                   >
                     <img

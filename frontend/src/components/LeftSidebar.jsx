@@ -12,6 +12,8 @@ import InfoIcon from "@mui/icons-material/Info";
 import LanguageIcon from "@mui/icons-material/Language";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import { Settings } from "@mui/icons-material";
+import { Menu } from "@mui/icons-material";
 
 const iconMap = {
   multiple_choice: <CheckIcon fontSize="small" />,
@@ -57,12 +59,17 @@ const LeftSidebar = ({ onWelcomeSidebarToggle, onEmailSidebarToggle }) => {
       <div>
         {/* Header */}
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-neutral-800 text-sm">Dashboard {">"} abc</h3>
-          <i className="fa-solid fa-gear text-neutral-600"></i>
+          {/* Breadcrumb */}
+          <h3 className="text-neutral-800 text-sm">
+            Dashboard {">"} Demo Form
+          </h3>
+
+          {/* Settings Icon */}
+          <Settings className="text-neutral-600" fontSize="small" />
         </div>
 
         {/* Tabs */}
-        <div className="flex space-x-4 text-xs mb-6 bg-gray-100 p-1 rounded-lg">
+        <div className="flex space-x-4 text-xs mb-10 bg-gray-100 p-1 rounded-lg">
           <Link
             to="/"
             className="text-neutral-900 bg-white py-1 px-2 rounded-lg shadow-sm"
@@ -81,7 +88,15 @@ const LeftSidebar = ({ onWelcomeSidebarToggle, onEmailSidebarToggle }) => {
         </div>
 
         {/* Steps */}
-        <div className="text-sm text-neutral-600 font-bold mb-2">Steps</div>
+        <div className="flex items-center mb-2">
+        {/* Hamburger Icon */}
+        <Menu className="text-neutral-600 mr-2" fontSize="small" />
+        
+        {/* Steps Text */}
+        <div className="text-sm text-neutral-600 font-bold">
+          Steps
+        </div>
+      </div>
         <p className="text-xs text-neutral-400 mb-6">
           The steps users will take to complete the form
         </p>
