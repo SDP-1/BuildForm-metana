@@ -36,7 +36,8 @@ For any inquiries or issues, please contact Your `sehandevinda1@gmail.com`.
 ![Screenshot 2024-09-19 195517](https://github.com/user-attachments/assets/19f53947-a17a-4150-89c6-63a13a78eadf)
 ![Screenshot 2024-09-19 193701](https://github.com/user-attachments/assets/2e1d1870-6b66-4816-9d7d-5e5e5e42981b)
 ![Screenshot 2024-09-19 193614](https://github.com/user-attachments/assets/e445faab-96b0-473e-9103-d2f6a43d0497)
-
+![Screenshot 2024-09-19 210915](https://github.com/user-attachments/assets/144a8300-2548-4992-bbcf-a79b815460d4)
+![Screenshot 2024-09-19 210911](https://github.com/user-attachments/assets/44981667-df89-4191-a0e6-a841c6b29091)
 
 
 
