@@ -23,8 +23,8 @@ To get started with this project, follow these steps:
 
 2. **Install Dependencies:**
      ```bash
-         cd ../fontend
-      npm install
+         cd ../frontend
+         npm install
 
 ### Contact
 For any inquiries or issues, please contact Your `sehandevinda1@gmail.com`.
