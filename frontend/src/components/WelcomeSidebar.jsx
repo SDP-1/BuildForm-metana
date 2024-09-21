@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Close, Settings, Upload } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import grid_1 from "../assets/grid_1.png";
+import grid_2 from "../assets/grid_2.png";
 
 const WelcomeSidebar = ({
   formData,
@@ -160,11 +162,7 @@ const WelcomeSidebar = ({
                     }`}
                     onClick={() => handlePlacementChange("right")}
                   >
-                    <img
-                      src="src/assets/grid_1.png" // Replace with your image path
-                      alt="Icon 1"
-                      className="w-6 h-6"
-                    />
+                    <img src={grid_1} alt="grid_1" className="w-6 h-6" />
                   </button>
 
                   <button
@@ -174,11 +172,7 @@ const WelcomeSidebar = ({
                     }`}
                     onClick={() => handlePlacementChange("left")}
                   >
-                    <img
-                      src="src/assets/grid_2.png" // Replace with your image path
-                      alt="Icon 2"
-                      className="w-6 h-6"
-                    />
+                    <img src={grid_2} alt="Icon 2" className="w-6 h-6" />
                   </button>
                 </div>
               </div>
