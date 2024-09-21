@@ -4,6 +4,11 @@
 
 A React application featuring a customizable dashboard with dynamic form settings, image uploads, and adaptive layout components. Users can easily manage form configurations, preview and reposition images, and switch between different interface views. Built with React, Material-UI, and Tailwind CSS for a modern, responsive design.
 
+
+## live preview 
+      https://build-form-metana-pcyl.vercel.app/
+
+    
 ## Features
 
 - **Dynamic Form Settings:** Customize form title, description, and button text.
